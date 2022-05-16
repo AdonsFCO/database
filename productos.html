@@ -1,9 +1,10 @@
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Base De datos || suplidores</title>
+    <title>Base De datos || Productos</title>
     <link rel="stylesheet" href="styles.css" />
     <!-- CSS only -->
     <link
@@ -14,6 +15,7 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
+
   <body>
     <!--La primera pagina es la de categorías.-->
     <!--Menu-->
@@ -33,15 +35,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-  
+            
             <li class="nav-item">
               <a class="nav-link" href="index.html">CATEGORIA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="./suplidores.html">SUPLIDOR</a>
+              <a class="nav-link" href="./suplidores.html">SUPLIDOR</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">PRODUCTOS</a>
+              <a class="nav-link active" href="./productos.html">PRODUCTOS</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./UDM.html">UDM</a>
@@ -62,38 +64,62 @@
       </div>
     </nav>
     <!--Formulario de agregar informacion-->
-    <button type="button" class="btn btn-primary" id="btn-añadir-suplidor">
+    <button type="button" class="btn btn-primary" id="btn-anadir-producto">
       AÑADIR
     </button>
     <div>
-      <p>Añadir informacion relacionada con los diferentes suplidores.</p>
+      <p>Añadir informacion relacionada con los diferentes productos.</p>
     </div>
 
     <fieldset>
       <legend>
-        <label>Nombre</label>
-        <input
-          type="text"
-          id="suplidor--input"
-          placeholder="Añada el nombre..."
-        />
-        
-        <label>Categoria</label>
-        <select id="listado-categoria">
-         <option>
-           
-         </option>
-        </select>
+   
+          <label>Nombre</label>
+          <input
+            type="text"
+            id="producto--input"
+            placeholder="Añada el nombre..."
+          />
+     
+
+    
+          <label>Categoria</label>
+          <select id="listado-categoria">
+          
+          </select>
+   
+
   
+          <label>Suplidores</label>
+          <select id="listado-suplidores">
+            
+          </select>
+     
 
-        <label>Precio</label>
-        <input
-          type="number"
-          id="precio--input"
-          placeholder="Añada el precio..."
-          value = '0'
-        />
+     
+          <label>Precio</label>
+          <input
+            type="number"
+            id="precio--input"
+            placeholder="Añada el precio..."
+            value="0"
+          />
+   
 
+       
+          <label>Cantidad</label>
+          <input
+            type="number"
+            id="cantidad--input"
+            placeholder="Añada el stock..."
+            value="0"
+          />
+          <label>UDM</label>
+          <select id="listado-udm">
+            
+          </select>
+     
+    
       </legend>
     </fieldset>
 
@@ -105,23 +131,27 @@
           <th scope="col">Codigo</th>
           <th scope="col">Nombre</th>
           <th scope="col">Categoria</th>
+          <th scope="col">Suplidor</th>
           <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">UDM</th>
           <th scope="col">Actualización</th>
         </tr>
       </thead>
-      <tbody>
-    
-      
-      </tbody>
+      <tbody></tbody>
     </table>
 
-    <script src="./generarSuplidor.js"></script>
+    <script src="./inicializador.js"></script>
+    <script src="./generarProducto.js"></script>
     <!-- JavaScript Bundle with Popper -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
-    ></script>
+    >
+  
+  
+  </script>
   </body>
 </html>
