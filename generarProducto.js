@@ -1,16 +1,17 @@
 /*id 
 
 Nombre
-Direccion 
-Numero de telefono
+Categoria
+Precio
  */
 
 //Obtener los valores de los elementos visuales de la pagina.
 const suplidor = document.getElementById("suplidor--input");
 const anadir = document.getElementById("btn-añadir-suplidor");
 const tabla = document.getElementById("tabla-principal");
-const tel = document.getElementById("telefono--input");
-const direccion = document.getElementById("direccion--input");
+const categoria = document.getElementById("listado-categoria");
+const precio = document.getElementById("precio--input");
+
 
 const borrarElemento = (id) => {
 
@@ -40,8 +41,8 @@ const obtenerInfo = () => {
           <tr>
           <td>${element.id}</td>
           <td>${element.nombre}</td>
-          <td>${element.tel}</td>
-          <td>${element.direccion}</td>
+          <td>${element.categoria}</td>
+          <td>${element.precio}</td>
           <td>${element.fecha}</td>
           <td><img src="./trash-bin.png" onclick="borrarElemento(${element.id})" class="borrar"></td>
           </tr>`);
@@ -72,6 +73,17 @@ const generarCodigo = (listadoDeElementos) => {
 
 
 
+const cargarCategorias = () => {
+  listadoCategoria = JSON.parse(localStorage.getItem("categoria"));
+  listadoCategoria.forEach((elemento) => {
+    $('#listado-categoria').append(`<option>${elemento.nombre} - ${elemento.id} </option>`);
+  });
+};
+
+
+
+cargarCategorias();
+
 anadir.onclick = () => {
   let suplidorActual = null;
 
@@ -88,14 +100,15 @@ anadir.onclick = () => {
   //Tomar los valores del formuarlo
 
   const valor = suplidor.value;
+  const precioActual = precio.value;
   const hoy = new Date();
-  const fechaActual = hoy.getFullYear() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getDate();
+  const fechaActual =
+    hoy.getFullYear() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getDate();
   const idNuevo = generarCodigo(JSON.parse(suplidorActual));
-  const telActual = tel.value;
-  const direccionActual = direccion.value;
+  const categoriaActual = categoria.value;
 
 //Validar campos 
-if (valor === "" || telActual === "" || direccionActual === "" ) {
+if (valor === "" || categoriaActual === "") {
     alert("Porfavor coloque la informacion en el cuadro de texto.");
     return null;
   }
@@ -104,8 +117,8 @@ if (valor === "" || telActual === "" || direccionActual === "" ) {
   const suplidorObjeto = {
     nombre: valor,
     fecha: fechaActual,
-    tel: telActual,
-    direccion: direccionActual,
+    categoria: categoriaActual,
+    precio: precioActual,
     id: idNuevo
   };
   console.log(suplidorObjeto)

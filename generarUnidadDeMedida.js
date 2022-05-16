@@ -1,9 +1,9 @@
 //Obtener los valores de los elementos visuales de la pagina.
-const udm = document.getElementById("udm--input");
+const UDM = document.getElementById("udm--input");
 const anadir = document.getElementById("btn-añadir-udm");
 const tabla = document.getElementById("tabla-principal");
-const borrarElemento = (id) => {
 
+const borrarElemento = (id) => {
     
   const elementosActuales = JSON.parse(localStorage.getItem("udm"));
   if(elementosActuales.length === 1)
@@ -21,7 +21,7 @@ const borrarElemento = (id) => {
 const obtenerInfo = () => {
    try{
     if (localStorage.hasOwnProperty("udm")) {
-    let categoriaActual = JSON.parse(localStorage.getItem("categoria"));
+    let categoriaActual = JSON.parse(localStorage.getItem("udm"));
 
     categoriaActual.forEach((element) => {
       $("#tabla-principal > tbody:last-child").append(`
@@ -57,7 +57,7 @@ anadir.onclick = () => {
   let udmActual = null;
 
   //determinar si los valores existen
-  if (localStorage.length === 0 ||JSON.parse(localStorage.getItem(udmActual)) === []) {
+  if (localStorage.length === 0 ||!(localStorage.hasOwnProperty("udm"))) {
     localStorage.setItem("udm", JSON.stringify([]));
     //Tomar los valores de almacenados actualmente.
     udmActual = localStorage.getItem("udm");
@@ -67,7 +67,7 @@ anadir.onclick = () => {
 console.log(udmActual)
   //Tomar los valores del formuarlo
 
-  const valor = udm.value;
+  const valor = UDM.value;
   if (valor === "") {
     alert("Porfavor coloque la informacion en el cuadro de texto.");
     return null;
@@ -81,17 +81,17 @@ console.log(udmActual)
   //Encapsular los valores del formulario
   const udmObjeto = {
     nombre: valor,
-    fecha: fechaActual, 
+    fecha: fechaActual,
     id: idNuevo,
   };
 
   //Crear un nuevo arreglo de categorias con la información que tenía el otro.
-  const arregloDeudms = JSON.parse(udmActual);
+  const arregloDeUDMs = JSON.parse(udmActual);
 
   //Añadir la informacion recopilada del formulario
-  arregloDeudms.push(udmObjeto);
+  arregloDeUDMs.push(udmObjeto);
 
   //Alamacenar esa información en el local storage proximo a todo el proceso
-  localStorage.setItem("udm", JSON.stringify(arregloDeudms));
+  localStorage.setItem("udm", JSON.stringify(arregloDeUDMs));
   location.reload();
 };

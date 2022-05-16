@@ -77,21 +77,21 @@
           id="suplidor--input"
           placeholder="Añada el nombre..."
         />
-        <label>Direccion</label>
+        
+        <label>Categoria</label>
+        <select id="listado-categoria">
+         <option>
+           
+         </option>
+        </select>
+  
+
+        <label>Precio</label>
         <input
-          type="text"
-          id="direccion--input"
-          placeholder="Añada su direccion..."
-        />
-
-   
-
-        <label>Telefono</label>
-        <input
-          type="tel"
-          id="telefono--input"
-          placeholder="Añada el numero de Telefono..."
-
+          type="number"
+          id="precio--input"
+          placeholder="Añada el precio..."
+          value = '0'
         />
 
       </legend>
@@ -104,8 +104,8 @@
         <tr>
           <th scope="col">Codigo</th>
           <th scope="col">Nombre</th>
-          <th scope="col">direccion</th>
-          <th scope="col">Telefono  </th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Precio</th>
           <th scope="col">Actualización</th>
         </tr>
       </thead>
