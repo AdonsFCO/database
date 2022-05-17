@@ -6,7 +6,7 @@ Categoria
 CANTIDAD
 Precio
 UDM
- */
+ */ 
 
 //Obtener los valores de los elementos visuales de la pagina.
 const producto = document.getElementById("producto--input");
