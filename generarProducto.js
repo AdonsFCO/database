@@ -56,8 +56,10 @@ const obtenerInfo = () => {
 obtenerInfo();
 
 const generarCodigo = (listadoDeElementos) => {
-  let conteo = 0;
+  debugger
+  let conteo = 0;   
   listadoDeElementos.forEach(function (elemento) {
+ 
     if (conteo > elemento.id) {
       return conteo;
     } else {
@@ -71,7 +73,7 @@ const generarCodigo = (listadoDeElementos) => {
 };
 
 const cargarCategorias = () => {
-  listadoCategoria = JSON.parse(localStorage.getItem("categoria"));
+  const listadoCategoria = JSON.parse(localStorage.getItem("categoria"));
   listadoCategoria.forEach((elemento) => {
     $("#listado-categoria").append(
       `<option>${elemento.nombre} - ${elemento.id} </option>`
@@ -80,8 +82,8 @@ const cargarCategorias = () => {
 };
 
 const cargarSuplidores = () => {
-  listadoCategoria = JSON.parse(localStorage.getItem("suplidor"));
-  listadoCategoria.forEach((elemento) => {
+  const listadoSuplidor = JSON.parse(localStorage.getItem("suplidor"));
+  listadoSuplidor.forEach((elemento) => {
     $("#listado-suplidores").append(
       `<option>${elemento.nombre} - ${elemento.id} </option>`
     );
@@ -89,8 +91,8 @@ const cargarSuplidores = () => {
 };
 
 const cargarUDM = () => {
-  listadoCategoria = JSON.parse(localStorage.getItem("udm"));
-  listadoCategoria.forEach((elemento) => {
+  const listadoUDM = JSON.parse(localStorage.getItem("udm"));
+  listadoUDM.forEach((elemento) => {
     $("#listado-udm").append(
       `<option>${elemento.nombre} - ${elemento.id} </option>`
     );
@@ -99,56 +101,62 @@ const cargarUDM = () => {
 
 //Para cargar los elementos de los listbox
 
-try {
-  cargarUDM();
-  cargarSuplidores();
-  cargarCategorias();
-} catch (e) {
-  console.log(e, " Estos elementos estan vacios");
-}
+cargarUDM();
+cargarSuplidores();
+cargarCategorias();
+
 anadir.onclick = () => {
-  let suplidorActual = null;
+  let productoActual = null;
 
   //determinar si los valores existen
-  if (!localStorage.hasOwnProperty("suplidor")) {
-    localStorage.setItem("suplidor", JSON.stringify([]));
+  if (!localStorage.hasOwnProperty("producto")) {
+    localStorage.setItem("producto", JSON.stringify([]));
     //Tomar los valores de almacenados actualmente.
-    suplidorActual = localStorage.getItem("suplidor");
+    productoActual = localStorage.getItem("producto");
   } else {
-    suplidorActual = localStorage.getItem("suplidor");
+    productoActual = localStorage.getItem("producto");
   }
 
-  console.log(suplidorActual);
+  console.log(productoActual);
   //Tomar los valores del formuarlo
 
-  const valor = suplidor.value;
+  const nombreProducto = producto.value;
   const precioActual = precio.value;
   const hoy = new Date();
   const fechaActual =
     hoy.getFullYear() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getDate();
-  const idNuevo = generarCodigo(JSON.parse(suplidorActual));
+  const idNuevo = generarCodigo(JSON.parse(productoActual));
   const categoriaActual = categoria.value;
+  const suplidorActual = suplidor.value; 
+  const cantidadActual = cantidad.value; 
+  const udmActual = UDM.value;
+
 
   //Validar campos
-  if (valor === "" || categoriaActual === "") {
+  if (nombreProducto === "" || categoriaActual === "" || suplidorActual === "" || udmActual === "") {
     alert("Porfavor coloque la informacion en el cuadro de texto.");
     return null;
   }
 
   //Encapsular los valores del formulario
-  const suplidorObjeto = {
-    nombre: valor,
+  const productoObjeto = {
+    nombre: nombreProducto,
     fecha: fechaActual,
     categoria: categoriaActual,
+    suplidor: suplidorActual,
+    udm: udmActual, 
+    cantidad: cantidadActual,
     precio: precioActual,
     id: idNuevo,
   };
-  console.log(suplidorObjeto);
+
+  console.log(productoObjeto);
+
   //Crear un nuevo arreglo de categorias con la información que tenía el otro.
-  const arregloSuplidores = JSON.parse(suplidorActual);
+  const arregloProductos = JSON.parse(productoActual);
   //Añadir la informacion recopilada del formulario
-  arregloSuplidores.push(suplidorObjeto);
+  arregloProductos.push(productoObjeto);
   //Alamacenar esa información en el local storage proximo a todo el proceso
-  localStorage.setItem("suplidor", JSON.stringify(arregloSuplidores));
+  localStorage.setItem("producto", JSON.stringify(arregloProductos));
   location.reload();
 };
