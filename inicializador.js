@@ -1,6 +1,6 @@
 //Se encarga de inicializar todos los valores en caso de no existir 
 //Esto para evitar errores
-const inciializar = ()=> {
+const incializar = ()=> {
 if(localStorage.length === 0)
 {
     localStorage.clear();
@@ -17,5 +17,13 @@ if(localStorage.length === 0)
 
 }
 
+
 }
-inciializar();
+function reiniciar()
+{
+    localStorage.clear();    
+    incializar();
+    location.reload();
+}
+
+incializar();

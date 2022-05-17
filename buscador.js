@@ -36,7 +36,7 @@ const buscarEn = (lista) => {
       <td>${elemento.id}</td>
       <td>${elemento.nombre}</td>
       <td>${elemento.fecha}</td>
-      <td><img src="./trash-bin.png" onclick="borrarElemento(${elemento.id})" class="borrar"></td>
+      <td><img src="./trash-bin.png"     onclick="borrarElemento(${elemento.id})" class="borrar"></td>
       </tr>`);
 
           break;

@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-     
+    <script src="./inicializador.js"></script>
  
   </head>
   <body>
@@ -24,7 +24,7 @@
         <a class="navbar-brand" href="#"></a>
         <button
           class="navbar-toggler"
-          type="button"
+          type="button" 
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
@@ -49,6 +49,7 @@
               <a class="nav-link" href="./UDM.html">UDM</a>
             </li>
           </ul>
+          
           <form class="d-flex" role="search">
             <input
               class="form-control me-2"
@@ -99,15 +100,12 @@
       
       </tbody>
     </table>
-
+    <button type="button" class="btn btn-danger" onclick="reiniciar()">Borrar todos los datos</button> <p><strong>Nota:</strong> Borra todos los datos de todas las tablas.</p>
     <!--Esto sirve par el buscador-->
     <!--Permite elegir cuales son los elementos que vamos a buscar-->
     <!--Script del buscador-->
     <script src="./buscador.js"></script>
-
-
-
-    <script src="./inicializador.js"></script>
+  
     <script src="./generarCategoria.js"></script>
     <!-- JavaScript Bundle with Popper -->
 
